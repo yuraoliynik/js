@@ -1,10 +1,11 @@
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(value => value.json())
     .then(value => {
-        const userDetails = document.getElementsByClassName('users')[0];
+        const users = document.getElementsByClassName('users')[0];
 
         for (const user of value) {
             const userCard = users.appendChild(document.createElement('div'));
+            userCard.className = 'userCard';
 
             const userId = userCard.appendChild(document.createElement('h3'));
             userId.innerText = user.id.toString();

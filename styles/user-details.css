@@ -1,0 +1,41 @@
+.userDetails > button {
+    width: 90%;
+}
+
+.userInfo > *:last-child {
+    margin-bottom: 0;
+}
+
+.objectName {
+    padding-left: 16px;
+}
+
+.objectWrap {
+    font-size: 18px;
+    border: 1px solid silver;
+    padding: 5px 15px;
+    margin-bottom: 5px;
+}
+
+.objectWrap > div {
+    padding-left: 15px;
+}
+
+.objectWrap:last-child {
+    margin-bottom: 0;
+}
+
+.objectWrap > *:last-child {
+    margin-bottom: 0;
+}
+
+.posts {
+    padding: 0 100px 50px;
+}
+
+.postCard {
+    width: calc((100% - 40px) / 5);
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px 15px;
+}

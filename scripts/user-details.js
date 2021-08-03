@@ -1,5 +1,4 @@
 const userId = new URL(location).searchParams.get('userId');
-console.log(userId);
 
 function objectToHTML(object, divParent) {
     for (const property in object) {
@@ -7,7 +6,11 @@ function objectToHTML(object, divParent) {
 
         if (typeof object[property] === 'object') {
             propertyElement.innerText = `${property}:`;
-            objectToHTML(object[property], divParent);
+            propertyElement.className = 'objectName'
+
+            const propertyObject = divParent.appendChild(document.createElement('div'));
+            propertyObject.className = 'objectWrap';
+            objectToHTML(object[property], propertyObject);
         } else {
             propertyElement.innerText = `${property}: ${object[property]}`;
         }
@@ -19,22 +22,33 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(value => {
         const userDetails = document.getElementsByClassName('userDetails')[0];
 
-        objectToHTML(value, userDetails);
+        const userInfo = userDetails.appendChild(document.createElement('div'));
+        userInfo.className = 'userInfo';
+
+        objectToHTML(value, userInfo);
 
         const userPostsBtn = userDetails.appendChild(document.createElement('button'));
-        userPostsBtn.innerText = 'post of current user';
+        userPostsBtn.innerText = 'Posts of current user';
 
         userPostsBtn.onclick = function() {
+            userPostsBtn.style.display = 'none';
+
+            const postsHeader = userDetails.appendChild(document.createElement('h2'));
+            postsHeader.className = 'header';
+            postsHeader.innerText = 'Posts of current user';
+
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                 .then(value => value.json())
                 .then(value => {
                     const posts = userDetails.appendChild(document.createElement('div'));
+                    posts.className = 'posts';
 
                     for (const post of value) {
                         const postCard = posts.appendChild(document.createElement('div'));
+                        postCard.className = 'postCard';
 
                         const postTitle = postCard.appendChild(document.createElement('p'));
-                        postTitle.innerText = post.title;
+                        postTitle.innerText = `Post: ${post.id}. ${post.title[0].toUpperCase() + post.title.substring(1)}`;
 
                         const postDetailsBtn = postCard.appendChild(document.createElement('button'));
                         postDetailsBtn.innerText = 'Post details';
@@ -43,6 +57,6 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                             window.location.href = `post-details.html?postId=${post.id}`;
                         }
                     }
-                })
+                });
         }
     });

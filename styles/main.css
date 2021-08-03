@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 18px;
+    /*white-space: pre;*/
+    word-break: break-all;
+    margin-bottom: 5px;
+}
+
+p:first-letter {
+    text-transform: uppercase;
+}
+
+button {
+    font-size: 16px;
+    padding: 3px 30px;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.users, .posts, .comments {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    padding: 0 100px;
+}
+
+.userCard, .postCard, .commentCard {
+    border: 1px solid silver;
+    display: flex;
+    flex-flow: column;
+}
+
+.userDetails, .postDetails {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+}
+
+.userInfo, .postInfo {
+    border: 1px solid silver;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+}

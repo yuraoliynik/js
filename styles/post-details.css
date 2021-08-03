@@ -1,0 +1,27 @@
+p {
+    border: 1px solid silver;
+    padding: 2px 15px;
+    background: white;
+}
+
+.postInfo, .commentCard {
+    background: whitesmoke;
+}
+
+.postInfo :last-child {
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+.comments {
+    padding: 0 100px 50px;
+}
+
+.commentCard {
+    width: calc((100% - 30px) / 4);
+    padding: 10px 15px;
+}
+
+.commentCard :last-child {
+    margin-bottom: 0;
+}

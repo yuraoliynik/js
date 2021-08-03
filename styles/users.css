@@ -1,0 +1,15 @@
+.users {
+    padding: 0 100px;
+}
+
+.userCard {
+    width: calc((100% - 10px) / 2);
+    align-items: center;
+    padding: 5px 0 10px;
+}
+
+h3, p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
